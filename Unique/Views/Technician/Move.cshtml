@@ -1,0 +1,49 @@
+﻿@model MvcTechnician.Models.Technician
+
+@{
+    ViewData["Title"] = "Move";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Move">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- <input type="hidden" asp-for="ID" /> -->
+            <div class="form-group">
+                <label>Technician</label>
+                @Html.TextArea("ErgasiaTexnikou", null, new { @class = "form-control", @rows = 3 })
+                <span asp-validation-for="ErgasiaTexnikou" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Extra Parts</label>
+                <input asp-for="UsedExtra" class="form-control" />
+                <span asp-validation-for="UsedExtra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Extra Notes</label>
+                <input asp-for="ExtraNotes" class="form-control" />
+                <span asp-validation-for="ErgasiaTexnikou" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Extra Parts Cost</label>
+                <input asp-for="ChargeExtra" class="form-control" />
+                <span asp-validation-for="ChargeExtra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Work Cost</label>
+                <input asp-for="ChargeWork" class="form-control" />
+                <span asp-validation-for="ChargeWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Location" class="form-control" value="Κοστολόγηση" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back</a>
+</div>

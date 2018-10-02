@@ -1,0 +1,164 @@
+﻿@model MvcProducts.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <div>
+        <h4>Basic Details</h4>
+        <div>
+            <table align="left" style="width:60%">
+                <tr style="height: 60px">
+                    <th style="width: 55%">Name</th>
+                    <td>@Html.DisplayFor(model => model.Name)</td>
+                </tr>
+                <tr>
+                    <th style="width: 55%">Receive Date</th>
+                    <td>@Html.DisplayFor(model => model.ReceiveDate)</td>
+                </tr>
+                <tr>
+                    <th style="width: 55%">Fix Date</th>
+                    <td>@Html.DisplayFor(model => model.FixDate)</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table align="right" style="width:39%">
+                <tr>
+                    <th style="width: 50%">Number</th>
+                    <td>@Html.DisplayFor(model => model.Number)</td>
+                </tr>
+                <tr style="height: 60px">
+                    <th style="width: 50%">Phone</th>
+                    <td>@Html.DisplayFor(model => model.Phone)</td>
+                </tr>
+                <tr>
+                    <th style="width: 50%">Send</th>
+                    <td>@Html.DisplayFor(model => model.Send)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <h4>Product</h4>
+    <div>
+        <div>
+            <table align="left">
+                <tr>
+                    <th style="width: 25%">Product</th>
+                    <td>@Html.DisplayFor(model => model.Products)</td>
+                </tr>
+                <tr>
+                    <th style="width: 25%">Description</th>
+                    <td>@Html.DisplayFor(model => model.Description)</td>
+                </tr>
+                <tr>
+                    <th style="width: 25%">Notes / Backup</th>
+                    <td>@Html.DisplayFor(model => model.Notes)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <h4>Technician</h4>
+        <div>
+            <table align="left">
+                <tr style="height: 60px">
+                    <th style="width: 25%">Technician</th>
+                    <td>
+                        @Html.DisplayFor(model => model.ErgasiaTexnikou)
+                    </td>
+                </tr>
+                <tr>
+                    <th style="width: 25%">Extra Parts</th>
+                    <td>
+                        @Html.DisplayFor(model => model.UsedExtra)
+                    </td>
+                </tr>
+                <tr>
+                    <th style="width: 25%">Extra Notes</th>
+                    <td>
+                        @Html.DisplayFor(model => model.ExtraNotes)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <h4>Costing</h4>
+        <div>
+            <table align="left">
+                <thead>
+                    <tr>
+                        <th>
+                            Extra Parts
+                        </th>
+                        <th>
+                            Work
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                        <th>
+                            Charge Method
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.ChargeExtra)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ChargeWork)
+                        </td>
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(model => model.ChargeMethod)
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <h4>Pending / Suppliers</h4>
+        <div>
+            <table align="left">
+                <tr>
+                    <th style="width: 25%">Pending</thstyle="width:>
+                    <td>@Html.DisplayFor(model => model.Ekkremotites)</td>
+                </tr>
+                <tr>
+                    <th style="width: 25%">Suppliers</th>
+                    <td>@Html.DisplayFor(model => model.Promitheftes)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<br />
+<div>
+    <input type="button" class="btn btn-success" onclick="printPage()" id="PageButton" value="Print" />
+
+    <input type="button" class="btn btn-default" value="Edit" id="PageButton" onclick="location.href='@Url.Action("Edit", new { ID = Model.ID })'" />
+    <input type="button" class="btn btn-default" value="Back" id="PageButton" onclick="location.href='@Url.Action("Index")'" />
+</div>
+
+<script>
+    function printPage() {
+        $(':button').css('visibility', 'hidden');
+        $('p').css('visibility', 'hidden');
+        window.print();
+        $(':button').css('visibility', 'visible');
+        $('p').css('visibility', 'visible');
+    }
+</script>
+
+<script>
+    $('th').css("text-align", "left");
+    $('td').css("text-align", "left");
+</script>
+
+

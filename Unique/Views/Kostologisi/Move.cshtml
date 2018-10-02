@@ -1,0 +1,75 @@
+﻿@model MvcKostologisi.Models.Kostologisi
+
+@{
+    ViewData["Title"] = "Move";
+}
+
+<div class="row">
+    <div class="col-md-4" id="el">
+        <form asp-action="Move">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- <input type="hidden" asp-for="ID" /> -->
+            <div class="form-group">
+                <label>Extra Parts Cost</label>
+                <input asp-for="ChargeExtra" class="form-control" id="extra" value="@ViewBag.ChargeExtra" />
+                <span asp-validation-for="ChargeExtra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Work Cost</label>
+                <input asp-for="ChargeWork" class="form-control" id="work" value="@ViewBag.ChargeWork" />
+                <span asp-validation-for="ChargeWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>V.A.T. (%)</label>
+                <input asp-for="FPA" class="form-control" id="FPA" />
+                <span asp-validation-for="FPA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Location" class="form-control" value="Προς Παράδοση" />
+            </div>
+            <div class="form-group">
+                <label>Total Cost</label>
+                <input asp-for="Total" class="form-control" id="total" />
+            </div>
+            <div class="form-group">
+                <label>Charge Method</label>
+                <input asp-for="ChargeMethod" class="form-control" />
+                <span asp-validation-for="ChargeMethod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<script>
+    new Vue({
+        el: "#el",
+        data() {
+            return {
+                form: {
+                    extra: 0,
+                    work: 0,
+                    total: 0
+                }
+            }
+        },
+        methods: {
+            updateExtra(event) {
+                this.form.extra = event.target.value
+                this.form.total = this.form.extra + this.work
+            },
+            updateWork(event) {
+                this.form.work = event.target.value
+                this.form.total = this.form.extra + this.form.work
+            }
+        }
+    })
+</script>

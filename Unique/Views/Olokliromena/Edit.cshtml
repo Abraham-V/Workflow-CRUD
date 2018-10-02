@@ -1,0 +1,134 @@
+﻿@model MvcProducts.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label>Number</label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Receive Date</label>
+                <input asp-for="ReceiveDate" class="form-control" />
+                <span asp-validation-for="ReceiveDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Fix Date</label>
+                <input asp-for="FixDate" class="form-control" />
+                <span asp-validation-for="FixDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Product</label>
+                <input asp-for="Products" class="form-control" />
+                <span asp-validation-for="Products" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                @Html.TextArea("Description", null, new { @class = "form-control", @rows = 3 })
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Notes / Backup</label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Send</label>
+                <br />
+                <label class="radio-inline"><input type="radio" asp-for="Send" name="Send" value="Yes">Yes</label>
+                <label class="radio-inline"><input type="radio" asp-for="Send" name="Send" value="No">No</label>
+                <span asp-validation-for="Send" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Technician</label>
+                @Html.TextArea("ErgasiaTexnikou", null, new { @class = "form-control", @rows = 3 })
+                <span asp-validation-for="ErgasiaTexnikou" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Extra Parts</label>
+                <input asp-for="UsedExtra" class="form-control" />
+                <span asp-validation-for="UsedExtra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Extra Notes</label>
+                <input asp-for="ExtraNotes" class="form-control" />
+                <span asp-validation-for="ExtraNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Extra Parts Cost</label>
+                <input asp-for="ChargeExtra" class="form-control" />
+                <span asp-validation-for="ChargeExtra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Work Cost</label>
+                <input asp-for="ChargeWork" class="form-control" />
+                <span asp-validation-for="ChargeWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>V.A.T.</label>
+                <input asp-for="FPA" class="form-control" />
+                <span asp-validation-for="FPA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Total</label>
+                <input asp-for="Total" class="form-control" />
+                <span asp-validation-for="Total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Charge Method</label>
+                <input asp-for="ChargeMethod" class="form-control" />
+                <span asp-validation-for="ChargeMethod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <br />
+                <label class="radio-inline"><input type="radio" asp-for="Location" name="Location" value="Προς Επισκευή" align="left">For Fixing</label>
+                <label class="radio-inline"><input type="radio" asp-for="Location" name="Location" value="Εργασία Τεχνικού">Technician</label>
+                <label class="radio-inline"><input type="radio" asp-for="Location" name="Location" value="Εκκρεμότητες" align="left">Pending</label>
+                <label class="radio-inline"><input type="radio" asp-for="Location" name="Location" value="Προμηθευτές - Προς">Suppliers - For</label>
+                <label class="radio-inline"><input type="radio" asp-for="Location" name="Location" value="Προμηθευτές - Ήδη" align="left">Suppliers - At</label>
+                <label class="radio-inline"><input type="radio" asp-for="Location" name="Location" value="Κοστολόγηση">Costing</label>
+                <label class="radio-inline"><input type="radio" asp-for="Location" name="Location" value="Προς Παράδοση" align="left">For Delivery</label>
+                <label class="radio-inline"><input type="radio" asp-for="Location" name="Location" value="Ολοκληρωμένα">Completed</label>
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label>Pending</label>
+                <input asp-for="Ekkremotites" class="form-control" />
+                <span asp-validation-for="Ekkremotites" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Suppliers</label>
+                <input asp-for="Promitheftes" class="form-control" />
+                <span asp-validation-for="Promitheftes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back</a>
+</div>
+

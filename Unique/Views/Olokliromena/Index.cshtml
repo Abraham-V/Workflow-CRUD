@@ -1,0 +1,135 @@
+﻿@model IEnumerable<MvcProducts.Models.Product>
+
+@{
+    ViewData["Title"] = "Completed";
+}
+
+<caption><font size="4">For Delivery</font></caption>
+<div>
+    <table data-toggle="table" data-sort-name="Number" data-sort-order="asc">
+        <thead>
+            <tr>
+                <th data-field="Number" data-sortable="true"  data-align="center">
+                    Number
+                </th>
+                <th>
+                    Product
+                </th>
+                <th data-sortable="true">
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th data-sortable="true"  data-align="center">
+                    Total Cost
+                </th>
+                <th>
+                    Send
+                </th>
+                <th  data-align="center">
+                    Details
+                </th>
+                <th  data-align="center">
+                    Delivered
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.Location == "Προς Παράδοση")
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Products)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Send)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Move" asp-route-id="@item.ID">Delivered</a>
+                </td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<hr />
+<caption><font size="4">Completed</font></caption>
+<div>
+    <table data-toggle="table" data-sort-name="ReceiveDate" data-sort-order="desc" data-pagination="true">
+        <thead>
+            <tr>
+                <th data-sortable="true"  data-align="center">
+                    Number
+                </th>
+                <th>
+                    Product
+                </th>
+                <th data-sortable="true">
+                    Name
+                </th>
+                <th data-align="center" data-sortable="true" data-field="ReceiveDate" data-sorter="dateSorter">
+                    Receive Date
+                </th>
+                <th>
+                    Description
+                </th>
+                <th data-sortable="true"  data-align="center">
+                    Total Cost
+                </th>
+                <th  data-align="center">
+                    Details
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.Location == "Ολοκληρωμένα")
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Products)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>                               
+                            @Html.DisplayFor(modelItem => item.ReceiveDate)                            
+                        </td>
+                        <td>                            
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

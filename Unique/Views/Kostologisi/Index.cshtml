@@ -1,0 +1,83 @@
+﻿@model IEnumerable<MvcProducts.Models.Product>
+
+@{
+    ViewData["Title"] = "For Costing";
+}
+
+<div>
+    <table data-toggle="table" data-sort-name="Number" data-sort-order="asc">
+        <thead>
+            <tr>
+                <th data-field="Number" data-sortable="true" data-align="center" rowspan="2">
+                    Number
+                </th>
+                <th rowspan="2">
+                    Product
+                </th>
+                <th data-sortable="true" rowspan="2">
+                    Name
+                </th>
+                <th rowspan="2">
+                    Description
+                </th>
+                <th colspan="2" data-align="center">
+                    Cost
+                </th>
+                <th data-sortable="true" data-align="center" rowspan="2">
+                    Send
+                </th>
+                <th data-align="center" rowspan="2">
+                    Details
+                </th>
+                <th data-align="center" rowspan="2">
+                    Costing
+                </th>
+            </tr>
+            <tr>
+                <th data-sortable="true" data-align="center">
+                    Extra Parts
+                </th>
+                <th data-sortable="true" data-align="center">
+                    Work
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.Location == "Κοστολόγηση")
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Products)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ChargeExtra)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ChargeWork)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Send)
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                        </td>
+                        <td>
+                            <a asp-action="Move" asp-route-id="@item.ID" asp-route-count="@Model.Count()">Costing</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

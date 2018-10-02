@@ -1,0 +1,140 @@
+﻿@model IEnumerable<MvcProducts.Models.Product>
+
+@{
+    ViewData["Title"] = "Suppliers";
+}
+
+<caption><font size="4">For</font></caption>
+<div>
+    <table data-toggle="table" data-sort-name="Number" data-sort-order="asc">
+        <thead>
+            <tr>
+                <th data-field="Number" data-sortable="true"  data-align="center">
+                    Number
+                </th>
+                <th>
+                    Product
+                </th>
+                <th data-sortable="true">
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Suppliers
+                </th>
+                <th  data-align="center">
+                    State
+                </th>
+                <th  data-align="center">
+                    Details
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.Location == "Προμηθευτές - Προς")
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Products)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Promitheftes)
+                        </td>
+                        <td>
+                            <a asp-action="MoveIdi" asp-route-id="@item.ID">At Supplier</a>
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<hr />
+<caption><font size="4">At</font></caption>
+<div>
+    <table data-toggle="table" data-sort-name="Number" data-sort-order="asc" id="Second">
+        <thead>
+            <tr>
+                <th data-field="Number" data-sortable="true"  data-align="center">
+                    Number
+                </th>
+                <th>
+                    Product
+                </th>
+                <th data-sortable="true">
+                    Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Suppliers
+                </th>
+                <th  data-align="center">
+                    Details
+                </th>
+                <th  data-align="center">
+                    To
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @if (item.Location == "Προμηθευτές - Ήδη")
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Products)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Promitheftes)
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                        </td>
+                        <td>
+                            <a asp-action="Move" asp-route-id="@item.ID">For Fixing</a>
+                            <br />
+                            <a asp-action="Pistosi" asp-route-id="@item.ID">Credit</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+        $("#Second").each(function () {
+            $("#Second > body").attr("id", "myBody");
+            if ($('#Second > tbody > tr').length == 0) {
+                $("#Second").replaceWith("<hr /><p>Δεν υπάρχουν καταχωρήσεις</p>");
+            }
+        })
+</script>
